@@ -1,0 +1,40 @@
+plugins {
+    id 'org.jetbrains.intellij' version '1.2.1'
+    id 'java'
+}
+
+group 'com.cnf271'
+version '0.1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation("org.jetbrains:marketplace-zip-signer:0.1.0")
+}
+
+signPlugin {
+    certificateChain = System.getenv("CERTIFICATE_CHAIN")
+    privateKey = System.getenv("PRIVATE_KEY")
+    password = System.getenv("PRIVATE_KEY_PASSWORD")
+}
+
+publishPlugin {
+    channels = ['stable']
+    token = System.getenv("PUBLISH_TOKEN")
+}
+
+intellij {
+    version = '2021.2.2'
+}
+
+patchPluginXml {
+    changeNotes = """"""
+}
+
+test {
+    useJUnitPlatform()
+}

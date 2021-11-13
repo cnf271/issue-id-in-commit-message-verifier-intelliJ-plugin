@@ -1,0 +1,21 @@
+<idea-plugin>
+  <id>com.cnf271.issue.id.in.commit.verifier</id>
+  <name>Issue Id in Commit Verifier</name>
+  <version>1.0.0</version>
+  <vendor email="cnf271@gmail.com" url="https://github.com/cnf271/issue-id-in-commit-message-verifier-intelliJ-plugin">cnf271</vendor>
+
+  <description><![CDATA[
+This plugin prevents users from committing code changes without an issue id in the commit message.
+Regex used for commit id verification.
+[A-Z]+\-\d+
+]]></description>
+
+  <idea-version since-build="143.0"/>
+
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.modules.vcs</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <checkinHandlerFactory implementation="com.cnf271.commit.CommitMessageVerifier"/>
+  </extensions>
+</idea-plugin>
